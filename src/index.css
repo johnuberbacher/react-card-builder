@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'StoneSerif';
+  src: url('./fonts/yu/Stone_Serif_Semibold.ttf') format('truetype');
+  font-weight: 600; /* Semibold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YuGiOhStoneSerif';
+  src: url('./fonts/yu/Yu-Gi-Oh_ITC_Stone_Serif_LT_Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'YuGiOhStoneSerifSCBold';
+  src: url('./fonts/yu/Yu-Gi-Oh_ITC_Stone_Serif_Small_Caps_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YuGiOhMatrixBook';
+  src: url('./fonts/yu/Yu-Gi-Oh_Matrix_Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YuGiOhMatrixSC2';
+  src: url('./fonts/yu/Yu-Gi-Oh_Matrix_Regular_Small_Caps_2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-stone-serif {
+  font-family: 'StoneSerif', sans-serif;
+}
+
+.font-ygo-stone-serif-italic {
+  font-family: 'YuGiOhStoneSerif', serif;
+  font-style: italic;
+}
+
+.font-ygo-stone-serif-sc-bold {
+  font-family: 'YuGiOhStoneSerifSCBold', serif;
+  font-weight: bold;
+}
+
+.font-ygo-matrix-book {
+  font-family: 'YuGiOhMatrixBook', sans-serif;
+}
+
+.font-ygo-matrix-sc-2 {
+  font-family: 'YuGiOhMatrixSC2', sans-serif;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
