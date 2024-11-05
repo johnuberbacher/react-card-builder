@@ -6,23 +6,22 @@ import Card from "./Card";
 const CardPage = ({ image }) => {
   const [rotation, setRotation] = useState(0);
   return (
-    <Canvas>
-   
-    {/* Lighting */}
-    <ambientLight intensity={0.5} />
-    <directionalLight position={[5, 0, 5]} intensity={1} />
+    <Canvas style={{ border: "0px", width: "100%", height: "100%" }}>
+      {/* Lighting */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 0, 5]} intensity={1} />
 
-    {/* Card with rotation control */}
-    <Card image={image} rotation={rotation} />
+      {/* Card with rotation control */}
+      <Card image={image} rotation={rotation} />
 
-    {/* Camera controls */}
-    <OrbitControls
-      enablePan={false}
-      enableZoom={true}
-      minDistance={1.25}
-      maxDistance={2.0}
-    />
-    {/*
+      {/* Camera controls */}
+      <OrbitControls
+        enablePan={false}
+        enableZoom={true}
+        minDistance={1.25}
+        maxDistance={2.0}
+      />
+      {/*
        <div className="hidden">
         <label
           htmlFor="range"
@@ -45,7 +44,7 @@ const CardPage = ({ image }) => {
         </div>
       </div>
       */}
-  </Canvas>
+    </Canvas>
   );
 };
 
