@@ -3,10 +3,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CardPage from "./components/CardPage";
 import YuCard from "./components/cards/YuCard";
-import LoCard from "./components/cards/LoCard";
+import LorcanaCard from "./components/lorcana/Card";
 import LorcanaForm from "./components/lorcana/Form";
 import YugiohForm from "./components/yugioh/Form";
-import html2canvas from "html2canvas";
 import { toPng } from "html-to-image";
 import { MaterialSymbol } from "react-material-symbols";
 import "react-material-symbols/rounded";
@@ -25,7 +24,7 @@ function App() {
     type: "Character",
     name: "John Uberbacher",
     characterType: "Reluctant Hero",
-    artwork: null,
+    artwork: "/lorcana/cards/template.png",
     template: "amber-character",
     cost: 3,
     lore: 2,
@@ -43,6 +42,22 @@ function App() {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        // Store the file URL in the state for use
+        setInputValues((prevState) => ({
+          ...prevState,
+          artwork: img.src,
+        }));
+      };
+    }
   };
 
   const handleToggleCardBuilderType = useCallback((value) => {
@@ -287,15 +302,6 @@ function App() {
     }, 100); // Adjust timeout if needed
   }, [cardBuilderType]);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-      img.onload = () => setCardImage(img.src);
-    }
-  };
-
   useEffect(() => {
     handleCapture();
   }, [inputValues, templateImage, cardImage, handleCapture]);
@@ -319,11 +325,17 @@ function App() {
                   <LorcanaForm
                     inputValues={inputValues}
                     handleInputChange={handleInputChange}
-                    toggleCardBuilderType={handleToggleCardBuilderType}
+                    handleFileChange={handleFileChange}
                   />
                 )}
 
-                {cardBuilderType === 1 && <YugiohForm />}
+                {cardBuilderType === 1 && (
+                  <YugiohForm
+                    inputValues={inputValues}
+                    handleInputChange={handleInputChange}
+                    handleFileChange={handleFileChange}
+                  />
+                )}
 
                 <div className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl mb-4">
                   Save as Image
@@ -345,7 +357,7 @@ function App() {
             <div className="h-full w-full">
               <div className="overflow-hidden h-0 w-0">
                 {cardBuilderType === 0 && (
-                  <LoCard
+                  <LorcanaCard
                     canvasPath={canvasPath}
                     templateImage={templateImage}
                     cardImage={cardImage}

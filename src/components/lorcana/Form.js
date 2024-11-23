@@ -1,10 +1,6 @@
 import React from "react";
 
-const LorcanaForm = ({
-  inputValues,
-  handleInputChange,
-  toggleCardBuilderType,
-}) => {
+const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
   return (
     <div className="h-full flex flex-col">
       <div className="mb-3">
@@ -63,7 +59,7 @@ const LorcanaForm = ({
           Artwork:
         </label>
         <input
-          onChange={handleInputChange}
+          onChange={handleFileChange}
           type="file"
           accept="image/*"
           className="block w-full cursor-pointer border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 file:bg-gray-50 file:border-0 file:cursor-pointer file:me-4 file:p-2.5 dark:file:bg-neutral-700 dark:file:text-neutral-400"
