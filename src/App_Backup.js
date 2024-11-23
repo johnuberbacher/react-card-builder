@@ -44,7 +44,7 @@ function App() {
             { value: "Effect", path: "./yugioh/effect_front.png" },
             { value: "Fusion", path: "./yugioh/fusion_front.png" },
             { value: "Trap", path: "./yugioh/trap_front.png" },
-            { value: "Spell", path: "./yugioh/spell_front.png" }
+            { value: "Spell", path: "./yugioh/spell_front.png" },
           ],
           name: "template",
           top: 70,
@@ -81,9 +81,9 @@ function App() {
         {
           label: "Level",
           type: "number",
-          min: 0,
-          max: 12,
-          default: 4,
+          min: 1,
+          max: 2,
+          default: 1,
           name: "level",
           step: 1,
           top: 72,
@@ -99,8 +99,7 @@ function App() {
           default: "JU24-00000",
           name: "setId",
           top: 443,
-          right: 44,
-          textAlign: "end",
+          right: 68,
           fontSize: 12.5,
           fontColor: "#000000",
           fontFamily: "YuGiOhStoneSerifSC",
@@ -138,8 +137,8 @@ function App() {
           type: "text",
           default: "0123456789 1st Edition",
           name: "serialNumber",
-          bottom: 25,
-          left: 17,
+          bottom: 28,
+          left: 19,
           fontSize: 12.5,
           fontColor: "#000000",
           fontFamily: "YuGiOhStoneSerifSC",
@@ -149,6 +148,18 @@ function App() {
     {
       name: "Lorcana",
       data: [
+        {
+          label: "Template",
+          type: "select",
+          default: "Normal",
+          options: [{ value: "Normal", path: "./lorcana/cards/sapphire-character.png" }],
+          name: "template",
+          top: 70,
+          left: 50,
+          fontSize: 18,
+          fontColor: "#ffffff",
+          fontFamily: "Arial",
+        },
         {
           label: "Lore",
           type: "number",
@@ -169,8 +180,13 @@ function App() {
   ];
 
   useEffect(() => {
+    drawImageAndText();
+    setCanvasPath(canvasRef.current.toDataURL("image/png"));
+  }, [templateImage, cardImage, fields, inputValues]);
+
+  useEffect(() => {
     const initializeFields = () => {
-      const initialFields = data[0].data.map((field) => ({
+      const initialFields = data[1].data.map((field) => ({
         ...field,
         value: field.default || "",
       }));
@@ -210,7 +226,7 @@ function App() {
       if (selectedOption) loadImage(selectedOption.path, setTemplateImage);
     }
 
-    drawImageAndText(templateImage, cardImage, fields);
+    drawImageAndText();
   };
 
   const loadImage = (src, setter) => {
@@ -220,45 +236,27 @@ function App() {
     img.onerror = (err) => console.error("Error loading image: ", err);
   };
 
-  const drawLevelImages = (ctx, level, x, y, direction, imageSize, align) => {
-    const img = new Image();
-    img.src = "./yugioh/level.png";
-    img.onload = () => {
-      for (let i = 0; i < level; i++) {
-        const xOffset = direction === "horizontal" ? i * imageSize : 0;
-        const yOffset = direction === "horizontal" ? 0 : i * imageSize;
-        const xPosition =
-          x +
-          (direction === "horizontal"
-            ? align === "end"
-              ? -((level - 1) * imageSize)
-              : 0
-            : 0);
-        ctx.drawImage(img, xPosition, y + yOffset, imageSize, imageSize);
-      }
-    };
-  };
-
-  useEffect(() => {
-    drawImageAndText(templateImage, cardImage, fields);
-  }, [templateImage, cardImage, fields, inputValues]);
-
-  const drawImageAndText = (templateImg, cardImg, fields) => {
+  const drawImageAndText = async () => {
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
-    if (templateImg) {
+    // Card Background
+    if (templateImage) {
       ctx.drawImage(
-        templateImg,
+        templateImage,
         0,
         0,
         canvasRef.current.width,
         canvasRef.current.height
       );
     }
-    if (cardImg) ctx.drawImage(cardImg, 48, 110, 325, 325);
 
-    fields.forEach((field) => {
+    // Card Artwork
+    if (cardImage) {
+      ctx.drawImage(cardImage, 48, 110, 325, 325);
+    }
+
+    fields.forEach(async (field) => {
       const {
         left,
         right,
@@ -273,24 +271,81 @@ function App() {
         align,
       } = field;
 
+      // Level Icons
       if (image && name === "level" && inputValues[name]) {
-        drawLevelImages(
-          ctx,
-          parseInt(inputValues[name], 10),
-          right !== undefined ? canvasRef.current.width - right : left,
-          bottom !== undefined ? canvasRef.current.height - bottom : top,
-          direction,
-          field.width,
-          align
-        );
+        const img = new Image();
+        img.src = "./yugioh/level.png";
+        img.onload = () => {
+          const count = parseInt(inputValues[name], 10);
+          console.log("count");
+          console.log(count);
+
+          for (let i = 1; i <= count; i++) {
+            let xPosition = 0;
+            let yPosition = 0;
+
+            if (direction === "horizontal") {
+              // Calculate xPosition based on alignment
+              if (align === "end") {
+                xPosition =
+                  (right !== undefined
+                    ? canvasRef.current.width - right
+                    : left) -
+                  i * field.width;
+              } else {
+                xPosition =
+                  (right !== undefined
+                    ? canvasRef.current.width - right
+                    : left) +
+                  i * field.width;
+              }
+              // Keep yPosition constant for horizontal direction
+              yPosition =
+                bottom !== undefined ? canvasRef.current.height - bottom : top;
+            } else {
+              // For vertical direction
+              xPosition =
+                bottom !== undefined ? canvasRef.current.width - bottom : left;
+              // Calculate yPosition based on alignment
+              if (align === "end") {
+                yPosition =
+                  (bottom !== undefined
+                    ? canvasRef.current.height - bottom
+                    : top) -
+                  i * field.width;
+              } else {
+                yPosition =
+                  (bottom !== undefined
+                    ? canvasRef.current.height - bottom
+                    : top) +
+                  i * field.width;
+              }
+            }
+
+            ctx.drawImage(img, xPosition, yPosition, field.width, field.width);
+          }
+        };
+
         return;
       }
 
       ctx.fillStyle = fontColor || "white";
       ctx.font = `${fontSize || 20}px ${fontFamily || "Arial"}`;
       ctx.textBaseline = "top";
-      const xPosition =
-        left !== undefined ? left : canvasRef.current.width - right;
+
+      // Determine text position based on alignment
+      let xPosition;
+      if (align === "end") {
+        xPosition =
+          right !== undefined ? canvasRef.current.width - right : left;
+      } else if (align === "start") {
+        xPosition = left !== undefined ? left : right;
+      } else {
+        // Default alignment (center)
+        xPosition =
+          left !== undefined ? left : (canvasRef.current.width - right) / 2;
+      }
+
       const yPosition =
         top !== undefined ? top : canvasRef.current.height - (bottom || 0);
       const text = inputValues[name] || "";
@@ -299,6 +354,7 @@ function App() {
           ? canvasRef.current.width - left - right
           : undefined;
 
+      // Wrap text if maxWidth is defined
       if (maxWidth) {
         wrapText(ctx, text, maxWidth, xPosition, yPosition, fontSize);
       } else {
@@ -306,7 +362,9 @@ function App() {
       }
     });
 
-    setCanvasPath(canvasRef.current.toDataURL("image/png"));
+    setTimeout(() => {
+      setCanvasPath(canvasRef.current.toDataURL("image/png"));
+    }, 50);
   };
 
   const wrapText = (ctx, text, maxWidth, xPosition, yPosition, fontSize) => {
@@ -414,7 +472,7 @@ function App() {
         <div className="py-4 pl-4 h-full w-80 min-w-80">
           <div className="flex flex-col overflow-hidden bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-600 shadow-lg rounded-xl p-4 h-full">
             <div className="text-2xl mb-1 dark:text-white select-none">
-              Yu-Gi-Oh!
+              {data[1].name}
             </div>
             <div className="text-neutral-400 text-sm mb-4 select-none">
               Lorem ipsum dolor sit amet
@@ -426,8 +484,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="h-full w-full flex flex-col">
-          yo
+        <div className="h-full w-full flex flex-col cursor-grab">
           {canvasPath && <CardPage image={canvasPath} />}
           <Footer />
           <canvas

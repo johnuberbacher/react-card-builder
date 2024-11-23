@@ -3,10 +3,89 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'BrandonTextBold';
+  src: url('./fonts/lor/BrandonText-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonTextMedium';
+  src: url('./fonts/lor/BrandonText-Medium.woff') format('woff');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BystanderSemibold';
+  src: url('./fonts/lor/bystander-semibold.woff2') format('woff2');
+  font-weight: 600; /* Semibold */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Memo';
+  src: url('./fonts/lor/Memo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MemoLight';
+  src: url('./fonts/lor/Memo-Light.woff') format('woff');
+  font-weight: 300; /* Light */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Brandon Text Bold */
+.font-brandon-bold {
+  font-family: 'BrandonTextBold', sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Brandon Text Medium */
+.font-brandon-medium {
+  font-family: 'BrandonTextMedium', sans-serif;
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+/* Bystander Semibold */
+.font-bystander-semibold {
+  font-family: 'BystanderSemibold', sans-serif;
+  font-weight: 600; /* Semibold */
+  font-style: normal;
+}
+
+/* Memo */
+.font-memo {
+  font-family: 'Memo', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Memo Light */
+.font-memo-light {
+  font-family: 'MemoLight', sans-serif;
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+
+/*************************************/
+
+@font-face {
   font-family: 'StoneSerif';
   src: url('./fonts/yu/Stone_Serif_Semibold.ttf') format('truetype');
   font-weight: 600; /* Semibold */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -14,6 +93,7 @@
   src: url('./fonts/yu/Yu-Gi-Oh_ITC_Stone_Serif_LT_Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -21,6 +101,7 @@
   src: url('./fonts/yu/Yu-Gi-Oh_ITC_Stone_Serif_Small_Caps_Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +109,7 @@
   src: url('./fonts/yu/Yu-Gi-Oh_Matrix_Book.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -35,6 +117,7 @@
   src: url('./fonts/yu/Yu-Gi-Oh_Matrix_Regular_Small_Caps_2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .font-stone-serif {
@@ -49,6 +132,7 @@
 .font-ygo-stone-serif-sc-bold {
   font-family: 'YuGiOhStoneSerifSCBold', serif;
   font-weight: bold;
+  font-display: swap;
 }
 
 .font-ygo-matrix-book {
@@ -68,23 +152,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  overflow: hidden;
 }
 
-body:before {
-  --line-color: var(--darkslate-400);
+.bg-grid:before {
+    --line-color: #32333440;
     --line-size: 80px;
     content: "";
     height: 100vh;
-    width: 101vw;
-    position: fixed;
+    width: 100vw;
+    position: absolute;
     background: linear-gradient(90deg, var(--line-color) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size), linear-gradient(var(--line-color) 1px, transparent 1px) 0 0 / var(--line-size) var(--line-size);
-    top: 0;
-    z-index: -1;
-    -webkit-mask: linear-gradient(-360deg, transparent 40%, white);
-    mask: linear-gradient(-360deg, transparent 40%, white);
+    top: -1px;
+   
+    -webkit-mask: linear-gradient(-1turn, transparent 33%, #fff);
+    mask: linear-gradient(-1turn, transparent 33%, #fff);
+    user-select: none;
+    pointer-events: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+canvas {
+  height: 100% !important;
+  width: 100% !important;
 }

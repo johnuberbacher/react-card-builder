@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Card from "./Card";
+import React, { useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Card from './Card';
 
-const CardPage = ({ image }) => {
+const CardPage = ({ frontImage, backImage, rotateY }) => {
   const [rotation, setRotation] = useState(0);
+
   return (
-    <Canvas style={{ border: "0px", width: "100%", height: "100%" }}>
+    <Canvas className="cursor-grab" style={{ border: '0px', width: '100%', height: '100%' }}>
       {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 0, 5]} intensity={1} />
+      <ambientLight intensity={1.0} />  {/* Soft ambient light */}
+      
+      {/* Directional light from the camera's POV, slightly to the left */}
+      <directionalLight
+        position={[0, 0, 3]}  // Light slightly to the left (negative x) and in front of the camera (positive z)
+        intensity={1.0}         // Increased intensity for better lighting
+        color="#ffffff"        // Neutral white light
+      />
 
       {/* Card with rotation control */}
-      <Card image={image} rotation={rotation} />
+      <Card frontImage={frontImage} backImage={backImage} rotation={rotation} rotateY={rotateY} />
 
       {/* Camera controls */}
       <OrbitControls
@@ -21,29 +28,6 @@ const CardPage = ({ image }) => {
         minDistance={1.25}
         maxDistance={2.0}
       />
-      {/*
-       <div className="hidden">
-        <label
-          htmlFor="range"
-          className="block mb-0.5 text-sm font-medium text-gray-900"
-        >
-          Star Count
-        </label>
-        <div className="flex flex-row items-center justify-center gap-4">
-          <input
-            id="steps-range"
-            type="range"
-            min="1"
-            max="1000"
-            step="1"
-            value={rotation}
-            onChange={(e) => setRotation(parseFloat(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-          ></input>
-          {rotation}
-        </div>
-      </div>
-      */}
     </Canvas>
   );
 };

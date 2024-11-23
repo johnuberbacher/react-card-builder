@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLoader } from '@react-three/fiber';
-import { TextureLoader, BoxGeometry, MeshStandardMaterial } from 'three';
-import backImage from '../images/yu/normalback.png';   // Replace with your card back image
+import { TextureLoader } from 'three';
 
-const Card = ({ rotation, image }) => {
-  const frontTexture = useLoader(TextureLoader, image);
+const Card = ({ rotation = 0, frontImage, backImage, rotateY = false }) => {
+  const frontTexture = useLoader(TextureLoader, frontImage);
   const backTexture = useLoader(TextureLoader, backImage);
+  const [rotationY, setRotationY] = useState(5.5);
+
+  useEffect(() => {
+    if (rotateY) {
+      const interval = setInterval(() => {
+        setRotationY((prev) => prev + 0.0025); // Adjust rotation speed here
+      }, 16); // ~60 FPS
+
+      return () => clearInterval(interval); // Clean up on component unmount
+    }
+  }, [rotateY]);
 
   return (
-    <mesh rotation-y={rotation}>
-      {/* Use BoxGeometry with slightly rounded edges */}
-      <boxGeometry args={[1, 1.5, 0.02]} />
-      
-      {/* Set front and back materials */}
+    <mesh rotation={[0, rotationY, 0]}>
+      <boxGeometry args={[1, 1.4, 0.01]} />
       <meshStandardMaterial attach="material-4" map={frontTexture} />
       <meshStandardMaterial attach="material-5" map={backTexture} />
-      
-      {/* Set edge materials to black */}
-      <meshStandardMaterial attach="material-0" color="black" />      {/* Right edge */}
-      <meshStandardMaterial attach="material-1" color="black" />      {/* Left edge */}
-      <meshStandardMaterial attach="material-2" color="black" />      {/* Top edge */}
-      <meshStandardMaterial attach="material-3" color="black" />      {/* Bottom edge */}
+      <meshStandardMaterial attach="material-0" color="DimGray" /> {/* Right edge */}
+      <meshStandardMaterial attach="material-1" color="DimGray" /> {/* Left edge */}
+      <meshStandardMaterial attach="material-2" color="DimGray" /> {/* Top edge */}
+      <meshStandardMaterial attach="material-3" color="DimGray" /> {/* Bottom edge */}
     </mesh>
   );
 };

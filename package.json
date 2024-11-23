@@ -8,7 +8,10 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "html-to-image": "^1.11.11",
+    "html2canvas": "^1.4.1",
     "react": "^18.3.1",
+    "react-material-symbols": "^4.4.0",
     "react-scripts": "5.0.1",
     "three": "^0.170.0",
     "web-vitals": "^2.1.4"
