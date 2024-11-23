@@ -1,28 +1,60 @@
-import React, { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import Card from './Card';
+import React, { useRef, useEffect, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
+import { OrbitControls } from "@react-three/drei";
+import Card from "./Card";
 
-const CardPage = ({ frontImage, backImage, rotateY }) => {
+const CardPage = ({
+  frontImage,
+  backImage,
+  rotateY,
+  setZoomPercent,
+}) => {
   const [rotation, setRotation] = useState(0);
+  const controlsRef = useRef();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const controls = controlsRef.current;
+
+      if (controls) {
+        const handleZoomChange = () => {
+          const distance = controls.object.position.distanceTo(controls.target);
+          const percent =
+            ((distance - controls.minDistance) /
+              (controls.maxDistance - controls.minDistance)) *
+            100;
+          setZoomPercent(percent.toFixed(0));
+        };
+
+        controls.addEventListener("change", handleZoomChange);
+
+        return () => {
+          controls.removeEventListener("change", handleZoomChange);
+        };
+      }
+    }
+  }, [isLoaded]);
 
   return (
-    <Canvas className="cursor-grab" style={{ border: '0px', width: '100%', height: '100%' }}>
-      {/* Lighting */}
-      <ambientLight intensity={1.0} />  {/* Soft ambient light */}
-      
-      {/* Directional light from the camera's POV, slightly to the left */}
-      <directionalLight
-        position={[0, 0, 3]}  // Light slightly to the left (negative x) and in front of the camera (positive z)
-        intensity={1.0}         // Increased intensity for better lighting
-        color="#ffffff"        // Neutral white light
+    <Canvas
+      className="cursor-grab"
+      gl={{
+        toneMapping: THREE.NoToneMapping,
+      }}
+      style={{ border: "0px", width: "100%", height: "100%" }}
+      onCreated={() => setIsLoaded(true)} // Set isLoaded when the canvas is ready
+    >
+      <ambientLight intensity={1} />
+      <Card
+        frontImage={frontImage}
+        backImage={backImage}
+        rotation={rotation}
+        rotateY={rotateY}
       />
-
-      {/* Card with rotation control */}
-      <Card frontImage={frontImage} backImage={backImage} rotation={rotation} rotateY={rotateY} />
-
-      {/* Camera controls */}
       <OrbitControls
+        ref={controlsRef}
         enablePan={false}
         enableZoom={true}
         minDistance={1.25}

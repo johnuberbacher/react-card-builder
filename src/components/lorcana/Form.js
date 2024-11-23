@@ -2,26 +2,29 @@ import React from "react";
 
 const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
   return (
-    <div className="h-full flex flex-col">
-      <div className="mb-3">
+    <div className="w-full h-full flex flex-col items-start justify-start">
+      <div className="w-full mb-3">
         <label
-          htmlFor="type"
+          htmlFor="template"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
-          Card Type:
+          Ink Color:
         </label>
         <select
-          name="type"
-          className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.type} // Binding to inputValues
           onChange={handleInputChange}
+          name="template"
+          className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          value={inputValues.template} // Binding to inputValues
         >
-          <option value="Character">Character</option>
-          <option value="Action">Action</option>
-          <option value="Item">Item</option>
+          <option value="example-character">Amber</option>
+          <option value="amethyst-character">Amethyst</option>
+          <option value="emerald-character">Emerald</option>
+          <option value="ruby-character">Ruby</option>
+          <option value="sapphire-character">Sapphire</option>
+          <option value="steel-character">Steel</option>
         </select>
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="name"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -36,57 +39,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           value={inputValues.name} // Binding to inputValues
         />
       </div>
-      <div className="mb-3">
-        <label
-          htmlFor="type"
-          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
-        >
-          Character Type:
-        </label>
-        <input
-          onChange={handleInputChange}
-          type="text"
-          name="characterType"
-          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.characterType} // Binding to inputValues
-        />
-      </div>
-      <div className="mb-3">
-        <label
-          htmlFor="image"
-          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
-        >
-          Artwork:
-        </label>
-        <input
-          onChange={handleFileChange}
-          type="file"
-          accept="image/*"
-          className="block w-full cursor-pointer border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 file:bg-gray-50 file:border-0 file:cursor-pointer file:me-4 file:p-2.5 dark:file:bg-neutral-700 dark:file:text-neutral-400"
-        />
-      </div>
-      <div className="mb-3">
-        <label
-          htmlFor="template"
-          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
-        >
-          Template:
-        </label>
-        <select
-          onChange={handleInputChange}
-          name="template"
-          className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.template} // Binding to inputValues
-        >
-          <option value="amber-character">Amber Character</option>
-          <option value="amethyst-character">Amethyst Character</option>
-          <option value="emerald-character">Emerald Character</option>
-          <option value="ruby-character">Ruby Character</option>
-          <option value="sapphire-character">Sapphire Character</option>
-          <option value="steel-character">Steel Character</option>
-        </select>
-      </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="cost"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -115,7 +68,54 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">10</span>
         </div>
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
+        <div className="inline-flex items-center">
+          <input
+            onChange={handleInputChange}
+            name="lorcanaInkable"
+            type="checkbox"
+            checked={inputValues.lorcanaInkable}
+            className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="lorcanaInkable"
+            className="cursor-pointer ms-2 text-sm font-medium text-neutral-900 dark:text-neutral-300"
+          >
+            Inkable
+          </label>
+        </div>
+      </div>
+
+      <div className="w-full mb-3">
+        <label
+          htmlFor="type"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Character Type:
+        </label>
+        <input
+          onChange={handleInputChange}
+          type="text"
+          name="characterType"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          value={inputValues.characterType} // Binding to inputValues
+        />
+      </div>
+      <div className="w-full mb-3">
+        <label
+          htmlFor="image"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Artwork:
+        </label>
+        <input
+          onChange={handleFileChange}
+          type="file"
+          accept="image/*"
+          className="block w-full cursor-pointer border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 file:bg-gray-50 file:border-0 file:cursor-pointer file:me-4 file:p-2.5 dark:file:bg-neutral-700 dark:file:text-neutral-400"
+        />
+      </div>
+      <div className="w-full mb-3">
         <label
           htmlFor="lore"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -139,7 +139,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">4</span>
         </div>
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="effect"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -154,7 +154,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
         />
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="strength"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -185,7 +185,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">10</span>
         </div>
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="willpower"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -215,7 +215,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">10</span>
         </div>
       </div>
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="template"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"

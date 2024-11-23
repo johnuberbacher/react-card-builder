@@ -1,50 +1,49 @@
 import React from "react";
+import { MaterialSymbol } from "react-material-symbols";
 
 const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
-  return (
-    <div className="h-full flex flex-col">
-      <div className="mb-3">
-        <label
-          htmlFor="type"
-          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
-        >
-          Card Type:
-        </label>
-        <select
-          name="type"
-          className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputValues.type} // Binding to inputValues
-          onChange={handleInputChange}
-        >
-          <option value="Character">Character</option>
-          <option value="Action">Action</option>
-          <option value="Item">Item</option>
-        </select>
-      </div>
 
-      <div className="mb-3">
+  function setRandomIdentifier() {
+    // Generate a random 9-digit number
+    const randomNumber = Math.floor(Math.random() * 90000000) + 10000000;
+  
+    // Find the input element by its name or ID and set its value
+    const inputElement = document.querySelector('input[name="yugiohIdentifier"]');
+    inputElement.value = randomNumber;
+  
+    // Manually trigger the 'onChange' event
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  
+
+  return (
+    <div className="w-full h-full flex flex-col items-start justify-start">
+      <div className="w-full mb-3">
         <label
-          htmlFor="template"
+          htmlFor="yugiohTemplate"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Template:
         </label>
         <select
           onChange={handleInputChange}
-          name="template"
+          name="yugiohTemplate"
           className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.template} // Binding to inputValues
+          value={inputValues.yugiohTemplate} // Binding to inputValues
         >
           <option value="normal">Normal</option>
           <option value="effect">Effect</option>
-          <option value="fusion">Fusion</option>
-          <option value="ritual">Ritual</option>
           <option value="trap">Trap</option>
           <option value="spell">Spell</option>
+          <option value="fusion">Fusion</option>
+          <option value="ritual">Ritual</option>
+          <option value="token">Token</option>
+          <option value="synchro">Synchro</option>
+          <option value="dark-synchro">Dark Syncrho</option>
         </select>
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
           htmlFor="name"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -60,7 +59,62 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
         />
       </div>
 
-      <div className="mb-3">
+      {inputValues.yugiohTemplate !== "spell" &&
+        inputValues.yugiohTemplate !== "trap" && (
+          <div className="w-full mb-3">
+            <label
+              htmlFor="yugiohElement"
+              className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+            >
+              Element:
+            </label>
+            <select
+              onChange={handleInputChange}
+              name="yugiohElement"
+              className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+              value={inputValues.yugiohElement} // Binding to inputValues
+            >
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+              <option value="fire">Fire</option>
+              <option value="earth">Earth</option>
+              <option value="water">Water</option>
+              <option value="wind">Wind</option>
+              <option value="laugh">Laugh</option>
+              <option value="divine">Divine</option>
+            </select>
+          </div>
+        )}
+
+      {inputValues.yugiohTemplate !== "spell" &&
+        inputValues.yugiohTemplate !== "trap" && (
+          <div className="w-full mb-3">
+            <label
+              htmlFor="yugiohLevel"
+              className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+            >
+              Level:
+            </label>
+            <input
+              type="range"
+              name="yugiohLevel"
+              min="0"
+              max="12"
+              className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              onChange={handleInputChange}
+              value={inputValues.yugiohLevel}
+            />
+            <div className="flex justify-between mt-2 text-xs text-gray-600 select-none">
+              {Array.from({ length: 13 }, (_, index) => (
+                <span key={index} className="w-8 text-center">
+                  {index}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+      <div className="w-full mb-3">
         <label
           htmlFor="image"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -75,102 +129,134 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
         />
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
-          htmlFor="level"
+          htmlFor="yugiohEdition"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
-          Level:
+          Edition:
         </label>
         <input
-          type="range"
-          name="level"
-          min="0"
-          max="12"
-          className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          defaultValue="6"
+          type="text"
+          name="yugiohEdition"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={inputValues.yugiohEdition} // Binding to inputValues
           onChange={handleInputChange}
-          value={inputValues.level}
         />
-        <div className="flex justify-between mt-2 text-xs text-gray-600 select-none">
-          {Array.from({ length: 13 }, (_, index) => (
-            <span key={index} className="w-8 text-center">
-              {index}
-            </span>
-          ))}
-        </div>
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
-          htmlFor="type"
+          htmlFor="yugiohCardType"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Type:
         </label>
         <input
           type="text"
-          name="type"
+          name="yugiohCardType"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           onChange={handleInputChange}
-          value={inputValues.type}
+          value={inputValues.yugiohCardType}
         />
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
-          htmlFor="effect"
+          htmlFor="yugiohEffect"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Effect:
         </label>
         <input
           type="text"
-          name="effect"
+          name="yugiohEffect"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
           onChange={handleInputChange}
-          value={inputValues.effect}
+          value={inputValues.yugiohEffect}
         />
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
-          htmlFor="attack"
+          htmlFor="yugiohAttack"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Attack:
         </label>
         <input
           type="range"
-          name="attack"
+          name="yugiohAttack"
           min="0"
           max="9900"
           step="100"
           className="pl-0.5 pr-0.25 cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          defaultValue="2000"
           onChange={handleInputChange}
-          value={inputValues.attack}
+          value={inputValues.yugiohAttack}
         />
       </div>
 
-      <div className="mb-3">
+      <div className="w-full mb-3">
         <label
-          htmlFor="defense"
+          htmlFor="yugiohDefense"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Defense:
         </label>
         <input
           type="range"
-          name="defense"
+          name="yugiohDefense"
           min="0"
           max="9900"
           step="100"
           className="pl-0.5 pr-0.25 cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          defaultValue="1500"
           onChange={handleInputChange}
-          value={inputValues.defense}
+          value={inputValues.yugiohDefense}
+        />
+      </div>
+
+      <div className="w-full mb-3">
+        <label
+          htmlFor="yugiohIdentifier"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Identifier:
+        </label>
+        <div class="w-full relative">
+          <input
+            type="text"
+            name="yugiohIdentifier"
+            className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            value={inputValues.yugiohIdentifier} // Binding to inputValues
+            onChange={handleInputChange}
+          />
+          <div
+           onClick={() => setRandomIdentifier()} 
+            className="group absolute right-[5px] top-[5px] cursor-pointer select-none flex items-center justify-center text-neutral-900 bg-white border border-neutral-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-neutral-100 font-medium rounded-lg text-sm w-8 h-8  dark:bg-neutral-800 dark:text-white dark:border-neutral-600 dark:hover:bg-neutral-700 dark:hover:border-neutral-600 dark:focus:ring-neutral-700 shadow-xl hover:shadow-2xl"
+          >
+            <MaterialSymbol
+              icon="casino"
+              size={20}
+              fill
+              className="rotate-[15deg] group-hover:rotate-[-5deg] transition-all relative"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full mb-3">
+        <label
+          htmlFor="name"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Copyright:
+        </label>
+        <input
+          type="text"
+          name="copyright"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={inputValues.copyright} // Binding to inputValues
+          onChange={handleInputChange}
         />
       </div>
     </div>

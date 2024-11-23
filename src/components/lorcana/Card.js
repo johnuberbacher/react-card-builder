@@ -18,10 +18,12 @@ import React, {
               backgroundImage: `url(${inputValues.artwork})`,
             }}
           ></div>
+          
         <img
-          src={inputValues.inkType || "./lorcana/icons/inkable.png"}
+          src={inputValues.lorcanaInkable === true ? "./lorcana/icons/inkable.png" : "./lorcana/icons/uninkable.png"}
           className="select-none absolute top-0 left-0 h-auto w-auto"
         />
+
         <img
           src={"./lorcana/cards/" + inputValues.template + ".png"}
           className="select-none absolute top-0 left-0 right-0 h-auto w-full"
@@ -50,7 +52,7 @@ import React, {
           {inputValues.willpower}
         </div>
   
-        <div className="absolute flex flex-col items-center justify-center h-[250px] w-18 border border-1 bottom-[80px] right-[40px]">
+        <div className="absolute flex flex-col items-center justify-center h-[250px] w-18 border border-red-500 bottom-[88px] right-[40px]">
           {Array.from({ length: parseInt(inputValues.lore) }, (_, index) => (
             <img src={"./lorcana/icons/lore.png"} className="w-[40px] h-auto" />
           ))}
@@ -59,17 +61,10 @@ import React, {
         <div className="absolute flex flex-col items-center justify-center h-20 w-full bottom-1 left-0 right-0">
           <img src={"./lorcana/icons/" + inputValues.rarity + ".png"} className="w-12 h-auto mx-auto" />
         </div>
-  
-        <div
-          className={
-            "absolute left-[56px] right-[56px] text-[22.25px] leading-[22.25px] " +
-            (inputValues.template === "Spell" || inputValues.template === "Trap"
-              ? "top-[818px]"
-              : "top-[858px]")
-          }
-        >
+          
+          <div className="h-[250px] w-[615px] flex flex-col items-start justify-center border border-red-500 absolute bottom-[88px] left-[44px]">
           {inputValues.effect}
-        </div>
+          </div>
       </div>
     );
   });
