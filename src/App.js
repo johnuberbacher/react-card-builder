@@ -184,14 +184,14 @@ function App() {
   return (
     <div className="flex flex-col h-screen bg-neutral-50 dark:bg-neutral-950 overflow-hidden">
       <div className="bg-grid relative h-full flex flex-row">
-        <div className="py-4 px-4 h-full w-80 min-w-80 overflow-hidden z-10">
+        <div className="py-4 pl-4 h-full w-80 min-w-80 overflow-hidden z-10">
           <div className="h-full overflow-y-auto flex flex-col bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-600 shadow-lg rounded-xl p-4">
             <div className="text-2xl mb-1 dark:text-white select-none">
               {data[cardBuilderType].name} Builder
             </div>
             <div className="text-neutral-400 text-sm mb-4 select-none">
               Craft personalized trading cards with custom names and effects
-            </div>
+            </div> 
             <div className="w-full flex flex-col justify-between rounded-xl pt-4 px-4 pb-1 border border-neutral-200 dark:bg-neutral-950 dark:border-neutral-600 relative h-full overflow-y-auto">
               {cardBuilderType === 0 && (
                 <LorcanaForm
@@ -226,7 +226,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="h-full w-full relative pr-4">
+        <div className="h-full w-full relative">
           <Header toggleCardBuilderType={handleToggleCardBuilderType} />
           <div className="h-full w-full">
             <div className="overflow-hidden h-0 w-0">
