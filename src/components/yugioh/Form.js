@@ -23,7 +23,7 @@ const YugiohForm = ({
 
   return (
     <div className="w-full flex flex-col items-start justify-start">
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohTemplate"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -48,7 +48,7 @@ const YugiohForm = ({
         </select>
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="name"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -66,7 +66,7 @@ const YugiohForm = ({
 
       {inputValues.yugiohTemplate !== "spell" &&
         inputValues.yugiohTemplate !== "trap" && (
-          <div className="w-full mb-3">
+          <div className="w-full mb-4">
             <label
               htmlFor="yugiohElement"
               className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -93,7 +93,7 @@ const YugiohForm = ({
 
       {inputValues.yugiohTemplate !== "spell" &&
         inputValues.yugiohTemplate !== "trap" && (
-          <div className="w-full mb-3">
+          <div className="w-full mb-4">
             <label
               htmlFor="yugiohLevel"
               className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -119,7 +119,7 @@ const YugiohForm = ({
           </div>
         )}
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="image"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -134,7 +134,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohEdition"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -150,7 +150,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohCardNumber"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -166,7 +166,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohCardType"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -182,7 +182,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohEffect"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -198,7 +198,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohAttack"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -217,7 +217,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohDefense"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -236,7 +236,7 @@ const YugiohForm = ({
         />
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohIdentifier"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
@@ -265,7 +265,7 @@ const YugiohForm = ({
         </div>
       </div>
 
-      <div className="w-full mb-3">
+      <div className="w-full mb-4">
         <label
           htmlFor="yugiohCopyright"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"

@@ -46,7 +46,11 @@ const LorcanaCard = forwardRef(
         </div>
 
         <div className="select-none absolute bottom-[392px] left-[41px] right-[228px] text-[31.75px] text-white font-brandon-medium overflow-hidden whitespace-nowrap">
-          {inputValues.characterType}
+          {inputValues.lorcanaVersion}
+        </div>
+
+        <div className="select-none absolute bottom-[348px] left-[41px] right-[41px] text-center text-[32px] opacity-65 text-white font-brandon-italic-bold overflow-hidden whitespace-nowrap">
+          {inputValues.lorcanaClassification}
         </div>
 
         <div className="absolute flex flex-col items-center justify-center w-20 h-20 text-center font-memo text-[56px] bottom-[398px] right-[124px]">
@@ -57,21 +61,25 @@ const LorcanaCard = forwardRef(
           {inputValues.willpower}
         </div>
 
-        <div className="h-[250px] w-[615px] flex flex-col items-center justify-center border border-red-500 absolute bottom-[88px] left-[44px]">
-          <div className="flex flex-col gap-2">
-            <div className="font-brandon-medium text-[34px] leading-[36px]">
-              {inputValues.lorcanaUnnamedAbility}
-            </div>
-            <div className="font-brandon-medium text-[34px] leading-[36px]">
-              <div className="inline-flex bg-[#57422a] rounded-br-xl overflow-hidden -ml-[15px] mr-1 px-3 uppercase text-white">
-                {inputValues.lorcanaNamedAbilityTitle}
+        <div className="h-[250px] w-[615px] flex flex-col items-center justify-center  absolute bottom-[88px] left-[44px]">
+          <div className="w-full flex flex-col gap-2">
+            {inputValues.lorcanaUnnamedAbility && (
+              <div className="font-brandon-medium text-[34px] leading-[36px]">
+                {inputValues.lorcanaUnnamedAbility}
               </div>
+            )}
+            <div className="font-brandon-medium text-[34px] leading-[36px]">
+              {inputValues.lorcanaNamedAbilityTitle && (
+                <div className="inline-flex bg-[#57422a] rounded-br-xl overflow-hidden -ml-[15px] mr-1 px-3 uppercase text-white">
+                  {inputValues.lorcanaNamedAbilityTitle}
+                </div>
+              )}
               {inputValues.lorcanaNamedAbilityDescription}
             </div>
           </div>
           <img
             src={"./lorcana/icons/divider.png"}
-            className="w-full h-auto my-1"
+            className="w-full h-auto mt-2 mb-1"
           />
           <div className="font-brandon-italic-light text-[36px] leading-[36px]">
             {inputValues.lorcanaFlavorText}
@@ -97,6 +105,10 @@ const LorcanaCard = forwardRef(
 
         <div className="select-none text-white absolute bottom-[43px] right-[407px] left-[31px] font-brandon-medium text-[18px] text-left overflow-hidden whitespace-nowrap">
           {inputValues.lorcanaArtist}
+        </div>
+
+        <div className="select-none text-white absolute bottom-[14px] right-[407px] left-[31px] font-brandon-medium text-[25px] text-left overflow-hidden whitespace-nowrap">
+          {inputValues.lorcanaCardNumber}
         </div>
 
         <div className="select-none text-white absolute bottom-[43px] right-[31px] left-[407px] font-brandon-medium text-[18px] text-right overflow-hidden whitespace-nowrap">

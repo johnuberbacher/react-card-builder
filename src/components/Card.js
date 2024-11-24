@@ -10,10 +10,10 @@ const Card = ({ frontImage, backImage, rotateY }) => {
   useEffect(() => {
     if (rotateY) {
       const interval = setInterval(() => {
-        setRotationY((prev) => prev + 0.0025); // Adjust rotation speed here
+        setRotationY((prev) => prev + 0.0025);
       }, 16); // ~60 FPS
 
-      return () => clearInterval(interval); // Clean up on component unmount
+      return () => clearInterval(interval);
     }
   }, [rotateY]);
 

@@ -19,6 +19,14 @@
 }
 
 @font-face {
+  font-family: 'BrandonTextItalic-Bold';
+  src: url('./fonts/lor/BrandonTextItalic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'BrandonTextItalic-Regular';
   src: url('./fonts/lor/BrandonTextItalic-Regular.woff') format('woff');
   font-weight: 400;
@@ -70,6 +78,13 @@
   font-family: 'BrandonTextMedium', sans-serif;
   font-weight: 500; /* Medium */
   font-style: normal;
+}
+
+/* Brandon Text Italic Light */
+.font-brandon-italic-bold {
+  font-family: 'BrandonTextItalic-Bold', sans-serif;
+  font-weight: 700; /* Light */
+  font-style: italic;
 }
 
 /* Brandon Text Italic Regular */

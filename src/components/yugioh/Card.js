@@ -18,17 +18,17 @@ const YugiohCard = forwardRef(
         ></div>
 
         <img
-          src={"./yugioh/" + inputValues.yugiohTemplate + ".png"}
+          src={"./yugioh/cards/" + inputValues.yugiohTemplate + ".png"}
           className="select-none absolute top-0 left-0 right-0 bottom-0 h-full w-full object-fit"
         />
 
         <img
           src={
             inputValues.yugiohTemplate === "spell"
-              ? "./yugioh/elements/spell.png"
+              ? "./yugioh/icons/spell.png"
               : inputValues.yugiohTemplate === "trap"
-              ? "./yugioh/elements/trap.png"
-              : "./yugioh/elements/" + inputValues.yugiohElement + ".png"
+              ? "./yugioh/icons/trap.png"
+              : "./yugioh/icons/" + inputValues.yugiohElement + ".png"
           }
           className="select-none absolute top-[48px] right-[50px]"
         />
@@ -48,7 +48,7 @@ const YugiohCard = forwardRef(
                   key={index}
                   className="w-[49px] h-auto aspect-[1/1] relative bg-cover bg-center"
                   style={{
-                    backgroundImage: `url("./yugioh/level.png")`,
+                    backgroundImage: `url("./yugioh/icons/level.png")`,
                   }}
                 ></div>
               ))}
@@ -121,7 +121,7 @@ const YugiohCard = forwardRef(
         </div>
 
         <div
-          style={{ backgroundImage: `url("./yugioh/seal.png)` }}
+          style={{ backgroundImage: `url("./yugioh/icons/seal.png)` }}
           className="object-fit bg-center bg-cover select-none absolute rounded-[2px] bottom-[50px] right-[50px] w-[24px] h-[24px] object-cover"
         ></div>
       </div>

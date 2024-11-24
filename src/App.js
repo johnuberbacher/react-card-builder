@@ -18,16 +18,15 @@ function App() {
   const [cardBuilderType, setCardBuilderType] = useState(0);
   const [rotateY, setRotateY] = useState(true);
   const [threeDimensional, setThreeDimensional] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [zoomPercent, setZoomPercent] = useState(0);
   const [inputValues, setInputValues] = useState({
     name: "John Uberbacher",
     artwork: "/lorcana/cards/template.png",
 
     type: "Character",
-    characterType: "Reluctant Hero",
-
-    template: "example-character",
+    lorcanaVersion: "Reluctant Ally",
+    lorcanaClassification: "Storyborn • Ally • Knight ",
+    template: "emerald-character",
     lorcanaInkable: true,
     cost: 6,
     lore: 3,
@@ -36,16 +35,15 @@ function App() {
     willpower: 5,
     rarity: "common",
 
-    lorcanaUnnamedAbility: "Exert shosen opposing character.",
-
-    lorcanaNamedAbilityTitle: "Adoring Fans",
+    lorcanaUnnamedAbility: "Exert chosen opposing character.",
+    lorcanaNamedAbilityTitle: "Adventure Ahead",
     lorcanaNamedAbilityDescription:
       "Whenever you play a character with cost 2 or less, you may exert them to draw a card.",
-
     lorcanaCopyright: "Disney Lorcana © Disney",
     lorcanaArtist: "John Uberbacher",
+    lorcanaCardNumber: "1/204 • EN • 1",
     lorcanaFlavorText:
-      "The best  part about a beachside concert is that there's always room for one more.",
+      "The best part about a beachside concert is that there's always room for one more.",
 
     yugiohTemplateType: "character",
     yugiohElement: "dark",
@@ -78,7 +76,6 @@ function App() {
       img.src = URL.createObjectURL(file);
 
       img.onload = () => {
-        // Store the file URL in the state for use
         setInputValues((prevState) => ({
           ...prevState,
           artwork: img.src,
@@ -88,10 +85,8 @@ function App() {
   };
 
   const handleToggleCardBuilderType = useCallback((value) => {
-    setLoading(true);
     setCardBuilderType(value);
     handleCapture();
-    setLoading(false);
   }, []);
 
   const handleToggleRotateY = () => {
@@ -102,7 +97,6 @@ function App() {
     setThreeDimensional(!threeDimensional);
   };
 
-  // Handle capture of the canvas content
   const handleCapture = useCallback(() => {
     if (!divRef.current) {
       console.warn("divRef is not available");
@@ -142,11 +136,11 @@ function App() {
   const data = [
     {
       name: "Lorcana",
-      backImage: "./lorcana/normal_back.png",
+      backImage: "./lorcana/cards/normal_back.png",
     },
     {
       name: "Yu-Gi-Oh",
-      backImage: "./yugioh/normal_back.png",
+      backImage: "./yugioh/cards/normal_back.png",
     },
   ];
 
@@ -158,11 +152,10 @@ function App() {
 
     const link = document.createElement("a");
     link.href = canvasPath;
-    link.download = "canvas-image.png";
+    link.download = inputValues.name + ".png";
     link.click();
   };
 
-  // Function to save canvas as PDF
   const saveAsPDF = () => {
     const canvas = twoDimensionalCanvas.current;
     if (!canvas) {
@@ -172,16 +165,15 @@ function App() {
 
     const pdf = new jsPDF("p", "mm", "a4");
     const canvasImg = canvas.toDataURL("image/png");
-    pdf.addImage(canvasImg, "PNG", 10, 10, 180, 160); // Add canvas image to PDF
+    pdf.addImage(canvasImg, "PNG", 0, 0, 210, 298);
 
-    pdf.save("canvas.pdf"); // Save the PDF with the desired name
+    pdf.save(inputValues.name + ".pdf");
   };
 
   useEffect(() => {
     // Capture the canvas after fields are updated
     setTimeout(() => {
       handleCapture();
-      setLoading(false); // End loading after capture
     }, 100); // Adjust timeout if needed
   }, [cardBuilderType]);
 
@@ -236,49 +228,43 @@ function App() {
         </div>
         <div className="h-full w-full relative pr-4">
           <Header toggleCardBuilderType={handleToggleCardBuilderType} />
-          {loading ? (
-            <div className="loading absolute text-[200px] text-white top-0 left-32">
-              Loading...
-            </div>
-          ) : (
-            <div className="h-full w-full">
-              <div className="overflow-hidden h-0 w-0">
-                {cardBuilderType === 0 && (
-                  <LorcanaCard
-                    canvasPath={canvasPath}
-                    inputValues={inputValues}
-                    ref={divRef}
-                  />
-                )}
+          <div className="h-full w-full">
+            <div className="overflow-hidden h-0 w-0">
+              {cardBuilderType === 0 && (
+                <LorcanaCard
+                  canvasPath={canvasPath}
+                  inputValues={inputValues}
+                  ref={divRef}
+                />
+              )}
 
-                {cardBuilderType === 1 && (
-                  <YugiohCard
-                    canvasPath={canvasPath}
-                    inputValues={inputValues}
-                    ref={divRef}
-                  />
-                )}
-              </div>
-              <canvas
-                ref={twoDimensionalCanvas}
-                className={`w-full h-full object-contain rounded-lg overflow-hidden max-w-xl m-auto flex p-10 ${
-                  threeDimensional ? "hidden" : "flex"
-                }`}
-              />
-
-              {canvasPath && threeDimensional && (
-                <div className="select-none h-full w-full flex flex-col cursor-grab items-center justify-center overflow-hidden">
-                  <CardPage
-                    frontImage={canvasPath}
-                    backImage={data[cardBuilderType].backImage}
-                    rotateY={rotateY}
-                    setZoomPercent={setZoomPercent}
-                    zoomPercent={zoomPercent}
-                  />
-                </div>
+              {cardBuilderType === 1 && (
+                <YugiohCard
+                  canvasPath={canvasPath}
+                  inputValues={inputValues}
+                  ref={divRef}
+                />
               )}
             </div>
-          )}
+            <canvas
+              ref={twoDimensionalCanvas}
+              className={`w-full h-full object-contain rounded-lg overflow-hidden max-w-xl m-auto flex p-10 ${
+                threeDimensional ? "hidden" : "flex"
+              }`}
+            />
+
+            {canvasPath && threeDimensional && (
+              <div className="select-none h-full w-full flex flex-col cursor-grab items-center justify-center overflow-hidden">
+                <CardPage
+                  frontImage={canvasPath}
+                  backImage={data[cardBuilderType].backImage}
+                  rotateY={rotateY}
+                  setZoomPercent={setZoomPercent}
+                  zoomPercent={zoomPercent}
+                />
+              </div>
+            )}
+          </div>
           <Footer
             toggleRotateY={handleToggleRotateY}
             toggleThreeDimensional={handleToggleThreeDimensional}
