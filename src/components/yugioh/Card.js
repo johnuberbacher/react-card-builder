@@ -75,9 +75,13 @@ const YugiohCard = forwardRef(
           {inputValues.yugiohEdition}
         </div>
 
+        <div className="absolute right-[82px] bottom-[270px] text-[30px] font-ygo-matrix-sc-2 text-right">
+          {inputValues.yugiohCardNumber}
+        </div>
+
         <div
           className={
-            "absolute left-[58px] right-[56px] text-[22.25px] leading-[22.25px] font-ygo-stone-serif-sc-bold " +
+            "absolute left-[58px] right-[56px] text-[22.25px] leading-[22.25px] font-ygo-matrix-book " +
             (inputValues.yugiohTemplate === "spell" ||
             inputValues.yugiohTemplate === "trap"
               ? "top-[810px]"
@@ -111,8 +115,9 @@ const YugiohCard = forwardRef(
           {inputValues.yugiohIdentifier}
         </div>
 
-        <div className="select-none absolute bottom-[17px] right-[60px] left-[315px] font-ygo-matrix-sc-2 text-[32px] text-right overflow-hidden whitespace-nowrap">
-          {inputValues.copyright}
+        <div className="select-none absolute bottom-[17px] right-[60px] left-[315px] font-ygo-matrix-sc-2 text-[32px] text-right overflow-hidden whitespace-nowrap flex flex-row gap-1.5 items-center justify-end">
+          <span className="text-[24px] font-serif">©</span>
+          {inputValues.yugiohCopyright}
         </div>
 
         <div

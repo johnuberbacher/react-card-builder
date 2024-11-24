@@ -152,6 +152,22 @@ const YugiohForm = ({
 
       <div className="w-full mb-3">
         <label
+          htmlFor="yugiohCardNumber"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Card/Set Number:
+        </label>
+        <input
+          type="text"
+          name="yugiohCardNumber"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={inputValues.yugiohCardNumber}
+          onChange={handleInputChange}
+        />
+      </div>
+
+      <div className="w-full mb-3">
+        <label
           htmlFor="yugiohCardType"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
@@ -227,7 +243,7 @@ const YugiohForm = ({
         >
           Identifier:
         </label>
-        <div class="w-full relative">
+        <div className="w-full relative">
           <input
             type="text"
             name="yugiohIdentifier"
@@ -251,16 +267,16 @@ const YugiohForm = ({
 
       <div className="w-full mb-3">
         <label
-          htmlFor="name"
+          htmlFor="yugiohCopyright"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Copyright:
         </label>
         <input
           type="text"
-          name="copyright"
+          name="yugiohCopyright"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputValues.copyright}
+          value={inputValues.yugiohCopyright}
           onChange={handleInputChange}
         />
       </div>

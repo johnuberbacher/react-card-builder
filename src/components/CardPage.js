@@ -9,6 +9,7 @@ const CardPage = ({
   backImage,
   rotateY,
   setZoomPercent,
+  zoomPercent, // Accept zoomPercent as a prop from the parent
 }) => {
   const [rotation, setRotation] = useState(0);
   const controlsRef = useRef();
@@ -36,6 +37,18 @@ const CardPage = ({
       }
     }
   }, [isLoaded]);
+
+  // Update the OrbitControls zoom level when zoomPercent changes
+  useEffect(() => {
+    if (controlsRef.current) {
+      const controls = controlsRef.current;
+      const min = controls.minDistance;
+      const max = controls.maxDistance;
+      const distance = min + ((max - min) * zoomPercent) / 100;
+      controls.object.position.setZ(distance); // Update camera position
+      controls.update();
+    }
+  }, [zoomPercent]);
 
   return (
     <Canvas

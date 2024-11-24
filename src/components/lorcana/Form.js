@@ -78,7 +78,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
             className="cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
           />
           <label
-            for="lorcanaInkable"
+            htmlFor="lorcanaInkable"
             className="cursor-pointer ms-2 text-sm font-medium text-neutral-900 dark:text-neutral-300"
           >
             Inkable
@@ -139,24 +139,49 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">4</span>
         </div>
       </div>
+      
       <div className="w-full mb-3">
         <label
-          htmlFor="effect"
+          htmlFor="lorcanaUnnamedAbility"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
-          Effect:
+          Unnamed Ability:
         </label>
         <input
           onChange={handleInputChange}
-          value={inputValues.effect}
+          value={inputValues.lorcanaUnnamedAbility}
           type="text"
-          name="effect"
+          name="lorcanaUnnamedAbility"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
         />
       </div>
+      
       <div className="w-full mb-3">
         <label
-          htmlFor="effect"
+          htmlFor="lorcanaNamedAbilityTitle"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Named Ability:
+        </label>
+        <input
+          onChange={handleInputChange}
+          value={inputValues.lorcanaNamedAbilityTitle}
+          type="text"
+          name="lorcanaNamedAbilityTitle"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+        />
+        <input
+          onChange={handleInputChange}
+          value={inputValues.lorcanaNamedAbilityDescription}
+          type="text"
+          name="lorcanaNamedAbilityDescription"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+        />
+      </div>
+
+      <div className="w-full mb-3">
+        <label
+          htmlFor="lorcanaFlavorText"
           className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
         >
           Flavor Text:

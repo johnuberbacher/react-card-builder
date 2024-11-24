@@ -35,10 +35,12 @@ function App() {
     strength: 3,
     willpower: 5,
     rarity: "common",
-    
-    lorcanaEffect1Name: "Adoring Fans",
-    lorcanaEffect1: "Whenever you play a character with cost 2 or less, you may exert them to draw a card.",
 
+    lorcanaUnnamedAbility: "Exert shosen opposing character.",
+
+    lorcanaNamedAbilityTitle: "Adoring Fans",
+    lorcanaNamedAbilityDescription:
+      "Whenever you play a character with cost 2 or less, you may exert them to draw a card.",
 
     lorcanaCopyright: "Disney Lorcana © Disney",
     lorcanaArtist: "John Uberbacher",
@@ -49,14 +51,15 @@ function App() {
     yugiohElement: "dark",
     yugiohLevel: 5,
     yugiohEdition: "1st Edition",
+    yugiohCardNumber: "JU25-EN004",
     yugiohTemplate: "normal",
     yugiohEffect:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      'If this card is banished: You can Special Summon 1 Level 4 or lower LIGHT Spellcaster monster from your hand or Deck, except "Astral Sorcerer of the Mystic Veil." You can only use each effect of "Astral Sorcerer of the Mystic Veil" once per turn.',
     yugiohCardType: "Monster/Effect",
     yugiohAttack: 2000,
     yugiohDefense: 1600,
     yugiohIdentifier: "1234567890",
-    yugiohCopyright: "Disney Lorcana © Disney",
+    yugiohCopyright: "2025 KONAMI",
   });
 
   const handleInputChange = (e) => {
@@ -270,6 +273,7 @@ function App() {
                     backImage={data[cardBuilderType].backImage}
                     rotateY={rotateY}
                     setZoomPercent={setZoomPercent}
+                    zoomPercent={zoomPercent}
                   />
                 </div>
               )}
@@ -280,6 +284,7 @@ function App() {
             toggleThreeDimensional={handleToggleThreeDimensional}
             threeDimensional={threeDimensional}
             zoomPercent={zoomPercent}
+            setZoomPercent={setZoomPercent}
           />
         </div>
       </div>

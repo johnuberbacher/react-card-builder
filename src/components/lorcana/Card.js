@@ -58,25 +58,16 @@ const LorcanaCard = forwardRef(
         </div>
 
         <div className="h-[250px] w-[615px] flex flex-col items-center justify-center border border-red-500 absolute bottom-[88px] left-[44px]">
-          <div className="flex flex-col gap-1">
-          <div className="font-brandon-medium text-[34px] leading-[36px]">
-            <div className="inline-flex bg-[#57422a] rounded-br-xl overflow-hidden -ml-[15px] mr-1 px-3.5 uppercase text-white">
-              {inputValues.lorcanaEffect1Name}
+          <div className="flex flex-col gap-2">
+            <div className="font-brandon-medium text-[34px] leading-[36px]">
+              {inputValues.lorcanaUnnamedAbility}
             </div>
-            {inputValues.lorcanaEffect1}
-          </div>
-          <div className="font-brandon-medium text-[34px] leading-[36px]">
-            <div className="inline-flex bg-[#57422a] rounded-br-xl overflow-hidden -ml-[15px] mr-1 px-3.5 uppercase text-white">
-              {inputValues.lorcanaEffect1Name}
+            <div className="font-brandon-medium text-[34px] leading-[36px]">
+              <div className="inline-flex bg-[#57422a] rounded-br-xl overflow-hidden -ml-[15px] mr-1 px-3 uppercase text-white">
+                {inputValues.lorcanaNamedAbilityTitle}
+              </div>
+              {inputValues.lorcanaNamedAbilityDescription}
             </div>
-            {inputValues.lorcanaEffect1}
-          </div>
-          </div>
-          <div className="font-brandon-medium">
-            {inputValues.lorcanaEffect2Name}
-          </div>
-          <div className="font-brandon-medium">
-            {inputValues.lorcanaEffect2}
           </div>
           <img
             src={"./lorcana/icons/divider.png"}
