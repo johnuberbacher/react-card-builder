@@ -212,13 +212,13 @@ function App() {
             <div className="w-full mt-4">
               <div
                 onClick={() => saveAsImage()}
-                className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl mb-4"
+                className="cursor-pointer text-center select-none text-white bg-blue-700 border border-blue-500 focus:outline-none hover:bg-blue-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl mb-4"
               >
                 Save as Image
               </div>
               <div
                 onClick={() => saveAsPDF()}
-                className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl"
+                className="cursor-pointer text-center select-none text-white bg-blue-700 border border-blue-500 focus:outline-none hover:bg-blue-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl"
               >
                 Save as PDF
               </div>
