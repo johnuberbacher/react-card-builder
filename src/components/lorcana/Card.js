@@ -56,7 +56,7 @@ const LorcanaCard = forwardRef(
           {inputValues.willpower}
         </div>
 
-        <div className="h-[250px] w-[615px] flex flex-col items-center justify-center  absolute bottom-[88px] left-[44px]">
+        <div className="h-[250px] w-[610px] flex flex-col items-center justify-center  absolute bottom-[88px] left-[44px]">
           <div className="w-full flex flex-col gap-2">
             {inputValues.lorcanaUnnamedAbility && (
               <div className="font-brandon-medium text-[34px] leading-[36px]">
