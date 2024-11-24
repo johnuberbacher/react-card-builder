@@ -2,7 +2,7 @@ import React from "react";
 
 const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
   return (
-    <div className="w-full h-full flex flex-col items-start justify-start">
+    <div className="w-full flex flex-col items-start justify-start">
       <div className="w-full mb-3">
         <label
           htmlFor="template"
@@ -14,7 +14,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           onChange={handleInputChange}
           name="template"
           className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.template} // Binding to inputValues
+          value={inputValues.template}
         >
           <option value="example-character">Amber</option>
           <option value="amethyst-character">Amethyst</option>
@@ -36,7 +36,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           type="text"
           name="name"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.name} // Binding to inputValues
+          value={inputValues.name}
         />
       </div>
       <div className="w-full mb-3">
@@ -53,7 +53,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           min="1"
           max="10"
           className="pl-0.5 pr-0.25 cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.cost} // Binding to inputValues
+          value={inputValues.cost}
         />
         <div className="flex justify-between mt-2 text-xs text-gray-600 select-none">
           <span className="w-8 text-center">1</span>
@@ -98,7 +98,7 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           type="text"
           name="characterType"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.characterType} // Binding to inputValues
+          value={inputValues.characterType}
         />
       </div>
       <div className="w-full mb-3">
@@ -151,6 +151,21 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           value={inputValues.effect}
           type="text"
           name="effect"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+        />
+      </div>
+      <div className="w-full mb-3">
+        <label
+          htmlFor="effect"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Flavor Text:
+        </label>
+        <input
+          onChange={handleInputChange}
+          value={inputValues.lorcanaFlavorText}
+          type="text"
+          name="lorcanaFlavorText"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
         />
       </div>
@@ -215,6 +230,23 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <span className="w-8 text-center">10</span>
         </div>
       </div>
+      
+      <div className="w-full mb-3">
+        <label
+          htmlFor="name"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Artist:
+        </label>
+        <input
+          type="text"
+          name="lorcanaArtist"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={inputValues.lorcanaArtist}
+          onChange={handleInputChange}
+        />
+      </div>
+      
       <div className="w-full mb-3">
         <label
           htmlFor="template"
@@ -234,6 +266,22 @@ const LorcanaForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           <option value="super-rare">Super-Rare</option>
           <option value="legendary">Legendary</option>
         </select>
+      </div>
+
+      <div className="w-full mb-3">
+        <label
+          htmlFor="name"
+          className="block select-none mb-1 text-xs font-medium text-neutral-900 dark:text-neutral-300"
+        >
+          Copyright:
+        </label>
+        <input
+          type="text"
+          name="lorcanaCopyright"
+          className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={inputValues.lorcanaCopyright}
+          onChange={handleInputChange}
+        />
       </div>
     </div>
   );

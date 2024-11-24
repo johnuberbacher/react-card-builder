@@ -26,17 +26,24 @@ function App() {
 
     type: "Character",
     characterType: "Reluctant Hero",
-    copyright: "Copyright © 2025",
 
     template: "example-character",
     lorcanaInkable: true,
-    cost: 3,
-    lore: 2,
-    effect:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    strength: 4,
-    willpower: 3,
+    cost: 6,
+    lore: 3,
+    effect: "Exert shosen opposing character.",
+    strength: 3,
+    willpower: 5,
     rarity: "common",
+    
+    lorcanaEffect1Name: "Adoring Fans",
+    lorcanaEffect1: "Whenever you play a character with cost 2 or less, you may exert them to draw a card.",
+
+
+    lorcanaCopyright: "Disney Lorcana © Disney",
+    lorcanaArtist: "John Uberbacher",
+    lorcanaFlavorText:
+      "The best  part about a beachside concert is that there's always room for one more.",
 
     yugiohTemplateType: "character",
     yugiohElement: "dark",
@@ -49,15 +56,15 @@ function App() {
     yugiohAttack: 2000,
     yugiohDefense: 1600,
     yugiohIdentifier: "1234567890",
+    yugiohCopyright: "Disney Lorcana © Disney",
   });
 
-  // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
 
     setInputValues((prevState) => ({
       ...prevState,
-      [name]: type === "checkbox" ? checked : value, // Use `checked` for checkbox
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -92,7 +99,7 @@ function App() {
     setThreeDimensional(!threeDimensional);
   };
 
-  // Function to handle capture of the canvas content
+  // Handle capture of the canvas content
   const handleCapture = useCallback(() => {
     if (!divRef.current) {
       console.warn("divRef is not available");
@@ -140,7 +147,6 @@ function App() {
     },
   ];
 
-  // Function to save canvas as an image (PNG)
   const saveAsImage = () => {
     if (!canvasPath) {
       console.warn("No canvas path available to save as image.");
@@ -149,7 +155,7 @@ function App() {
 
     const link = document.createElement("a");
     link.href = canvasPath;
-    link.download = "canvas-image.png"; // Specify the download file name
+    link.download = "canvas-image.png";
     link.click();
   };
 
@@ -191,7 +197,7 @@ function App() {
             <div className="text-neutral-400 text-sm mb-4 select-none">
               Craft personalized trading cards with custom names and effects
             </div>
-            <div className="w-full flex flex-col justify-between rounded-xl p-4 border border-neutral-200 dark:bg-neutral-950 dark:border-neutral-600 relative h-full overflow-y-auto">
+            <div className="w-full flex flex-col justify-between rounded-xl pt-4 px-4 pb-1 border border-neutral-200 dark:bg-neutral-950 dark:border-neutral-600 relative h-full overflow-y-auto">
               {cardBuilderType === 0 && (
                 <LorcanaForm
                   inputValues={inputValues}
@@ -205,22 +211,22 @@ function App() {
                   inputValues={inputValues}
                   handleInputChange={handleInputChange}
                   handleFileChange={handleFileChange}
+                  setInputValues={setInputValues}
                 />
               )}
-
-              <div className="w-full mt-1">
-                <div
-                  onClick={() => saveAsImage()}
-                  className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl mb-4"
-                >
-                  Save as Image
-                </div>
-                <div
-                  onClick={() => saveAsPDF()}
-                  className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl"
-                >
-                  Save as PDF
-                </div>
+            </div>
+            <div className="w-full mt-4">
+              <div
+                onClick={() => saveAsImage()}
+                className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl mb-4"
+              >
+                Save as Image
+              </div>
+              <div
+                onClick={() => saveAsPDF()}
+                className="cursor-pointer text-center select-none text-white bg-indigo-700 border border-indigo-500 focus:outline-none hover:bg-indigo-600 focus:ring-4 focus:ring-neutral-100 font-medium rounded-xl text-sm px-5 py-2.5 shadow-xl hover:shadow-2xl"
+              >
+                Save as PDF
               </div>
             </div>
           </div>

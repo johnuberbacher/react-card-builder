@@ -1,23 +1,28 @@
 import React from "react";
 import { MaterialSymbol } from "react-material-symbols";
 
-const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
-
+const YugiohForm = ({
+  inputValues,
+  handleInputChange,
+  handleFileChange,
+  setInputValues,
+}) => {
   function setRandomIdentifier() {
     // Generate a random 9-digit number
     const randomNumber = Math.floor(Math.random() * 90000000) + 10000000;
-  
-    // Find the input element by its name or ID and set its value
-    const inputElement = document.querySelector('input[name="yugiohIdentifier"]');
-    inputElement.value = randomNumber;
-  
-    // Manually trigger the 'onChange' event
-    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+
+    const updateInputValue = (key, value) => {
+      setInputValues((prevState) => ({
+        ...prevState,
+        [key]: value,
+      }));
+    };
+
+    updateInputValue("yugiohIdentifier", randomNumber);
   }
-  
 
   return (
-    <div className="w-full h-full flex flex-col items-start justify-start">
+    <div className="w-full flex flex-col items-start justify-start">
       <div className="w-full mb-3">
         <label
           htmlFor="yugiohTemplate"
@@ -29,7 +34,7 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           onChange={handleInputChange}
           name="yugiohTemplate"
           className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-          value={inputValues.yugiohTemplate} // Binding to inputValues
+          value={inputValues.yugiohTemplate}
         >
           <option value="normal">Normal</option>
           <option value="effect">Effect</option>
@@ -54,7 +59,7 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           type="text"
           name="name"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputValues.name} // Binding to inputValues
+          value={inputValues.name}
           onChange={handleInputChange}
         />
       </div>
@@ -72,7 +77,7 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
               onChange={handleInputChange}
               name="yugiohElement"
               className="cursor-pointer bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-              value={inputValues.yugiohElement} // Binding to inputValues
+              value={inputValues.yugiohElement}
             >
               <option value="dark">Dark</option>
               <option value="light">Light</option>
@@ -140,7 +145,7 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           type="text"
           name="yugiohEdition"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputValues.yugiohEdition} // Binding to inputValues
+          value={inputValues.yugiohEdition}
           onChange={handleInputChange}
         />
       </div>
@@ -227,11 +232,11 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
             type="text"
             name="yugiohIdentifier"
             className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            value={inputValues.yugiohIdentifier} // Binding to inputValues
+            value={inputValues.yugiohIdentifier}
             onChange={handleInputChange}
           />
           <div
-           onClick={() => setRandomIdentifier()} 
+            onClick={() => setRandomIdentifier()}
             className="group absolute right-[5px] top-[5px] cursor-pointer select-none flex items-center justify-center text-neutral-900 bg-white border border-neutral-300 focus:outline-none hover:bg-neutral-100 focus:ring-4 focus:ring-neutral-100 font-medium rounded-lg text-sm w-8 h-8  dark:bg-neutral-800 dark:text-white dark:border-neutral-600 dark:hover:bg-neutral-700 dark:hover:border-neutral-600 dark:focus:ring-neutral-700 shadow-xl hover:shadow-2xl"
           >
             <MaterialSymbol
@@ -255,7 +260,7 @@ const YugiohForm = ({ inputValues, handleInputChange, handleFileChange }) => {
           type="text"
           name="copyright"
           className="bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputValues.copyright} // Binding to inputValues
+          value={inputValues.copyright}
           onChange={handleInputChange}
         />
       </div>

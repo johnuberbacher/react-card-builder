@@ -19,6 +19,22 @@
 }
 
 @font-face {
+  font-family: 'BrandonTextItalic-Regular';
+  src: url('./fonts/lor/BrandonTextItalic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonTextItalic-Light';
+  src: url('./fonts/lor/BrandonTextItalic-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'BystanderSemibold';
   src: url('./fonts/lor/bystander-semibold.woff2') format('woff2');
   font-weight: 600; /* Semibold */
@@ -54,6 +70,20 @@
   font-family: 'BrandonTextMedium', sans-serif;
   font-weight: 500; /* Medium */
   font-style: normal;
+}
+
+/* Brandon Text Italic Regular */
+.font-brandon-italic-regular {
+  font-family: 'BrandonTextItalic-Regular', sans-serif;
+  font-weight: 400; /* REgular */
+  font-style: italic;
+}
+
+/* Brandon Text Italic Light */
+.font-brandon-italic-light {
+  font-family: 'BrandonTextItalic-Light', sans-serif;
+  font-weight: 300; /* Light */
+  font-style: italic;
 }
 
 /* Bystander Semibold */
