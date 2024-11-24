@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
-import { MaterialSymbol } from "react-material-symbols";
+import React, { forwardRef } from "react";
 import "react-material-symbols/rounded";
 
 const YugiohCard = forwardRef(
@@ -20,6 +13,7 @@ const YugiohCard = forwardRef(
         <img
           src={"./yugioh/cards/" + inputValues.yugiohTemplate + ".png"}
           className="select-none absolute top-0 left-0 right-0 bottom-0 h-full w-full object-fit"
+          alt={"TCG Card Builder by John Uberbacher"}
         />
 
         <img
@@ -30,6 +24,7 @@ const YugiohCard = forwardRef(
               ? "./yugioh/icons/trap.png"
               : "./yugioh/icons/" + inputValues.yugiohElement + ".png"
           }
+          alt={"TCG Card Builder by John Uberbacher"}
           className="select-none absolute top-[48px] right-[50px]"
         />
 

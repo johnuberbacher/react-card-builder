@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { MaterialSymbol } from "react-material-symbols";
 
 const Footer = ({

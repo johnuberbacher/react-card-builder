@@ -8,7 +8,6 @@ import YugiohCard from "./components/yugioh/Card";
 import YugiohForm from "./components/yugioh/Form";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
-import { MaterialSymbol } from "react-material-symbols";
 import "react-material-symbols/rounded";
 
 function App() {

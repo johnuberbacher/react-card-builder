@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
-import { MaterialSymbol } from "react-material-symbols";
+import React, { forwardRef } from "react";
 import "react-material-symbols/rounded";
 
 const LorcanaCard = forwardRef(
@@ -27,11 +20,13 @@ const LorcanaCard = forwardRef(
               : "./lorcana/icons/uninkable.png"
           }
           className="select-none absolute top-0 left-0 h-auto w-auto"
+          alt={'TCG Card Builder by John Uberbacher'}
         />
 
         <img
           src={"./lorcana/cards/" + inputValues.template + ".png"}
           className="select-none absolute top-0 left-0 right-0 h-auto w-full"
+          alt={'TCG Card Builder by John Uberbacher'}
         />
 
         <div className="absolute flex flex-col items-center justify-center w-20 h-20 text-center text-white font-memo text-[48px] top-[42px] left-[38px]">
@@ -80,6 +75,7 @@ const LorcanaCard = forwardRef(
           <img
             src={"./lorcana/icons/divider.png"}
             className="w-full h-auto mt-2 mb-1"
+            alt={'TCG Card Builder by John Uberbacher'}
           />
           <div className="font-brandon-italic-light text-[36px] leading-[36px]">
             {inputValues.lorcanaFlavorText}
@@ -92,7 +88,8 @@ const LorcanaCard = forwardRef(
 
         <div className="absolute flex flex-col items-center justify-center h-[250px] w-18 bottom-[88px] right-[40px]">
           {Array.from({ length: parseInt(inputValues.lore) }, (_, index) => (
-            <img src={"./lorcana/icons/lore.png"} className="w-[40px] h-auto" />
+            <img src={"./lorcana/icons/lore.png"} className="w-[40px] h-auto"
+            alt={'TCG Card Builder by John Uberbacher'} />
           ))}
         </div>
 
@@ -100,6 +97,7 @@ const LorcanaCard = forwardRef(
           <img
             src={"./lorcana/icons/" + inputValues.rarity + ".png"}
             className="w-12 h-auto mx-auto"
+            alt={'TCG Card Builder by John Uberbacher'}
           />
         </div>
 

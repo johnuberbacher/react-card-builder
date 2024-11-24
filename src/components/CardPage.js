@@ -11,7 +11,7 @@ const CardPage = ({
   setZoomPercent,
   zoomPercent,
 }) => {
-  const [rotation, setRotation] = useState(0);
+  const [rotation] = useState(0);
   const controlsRef = useRef();
   const [isLoaded, setIsLoaded] = useState(false);
 
