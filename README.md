@@ -43,9 +43,31 @@ To run the project locally, follow these steps:
 4. Start the development server:  
    `npm start`
 
+### Docker Setup
+
+If you prefer to use Docker for development or deployment, you can follow these steps:
+
+1. Ensure you have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/) installed on your system.
+2. Clone the repository:  
+   `git clone https://github.com/your-username/tcg-card-builder.git`
+3. Navigate to the project directory:  
+   `cd tcg-card-builder`
+4. Build and run the Docker container:  
+   `docker-compose up --build`
+   
+   This will build the app, install dependencies, and serve it using Nginx on port 3000.
+
+5. Open your browser and visit:  
+   [http://localhost:3000](http://localhost:3000)
+
 ## Build
 
-To create a production-ready build:  
+To create a production-ready build locally using Docker:
+
+1. Run `docker-compose up --build` to rebuild the container.
+2. After the build process completes, the app will be available on `http://localhost:3000`.
+
+Alternatively, you can run the build without Docker using the following command:
 `npm run build`
 
 ## Dependencies
@@ -66,23 +88,6 @@ Available scripts for development and production:
 - `npm run build`: Builds the app for production.
 - `npm test`: Runs the test suite.
 
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
-
-1. Fork the repository.  
-2. Create a new branch:  
-   `git checkout -b feature-name`  
-3. Commit your changes:  
-   `git commit -m "Add feature name"`  
-4. Push to your branch:  
-   `git push origin feature-name`  
-5. Open a pull request.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- Inspired by the creativity of TCG players and designers.
