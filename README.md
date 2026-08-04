@@ -1,74 +1,63 @@
 # TCG Card Builder
+
+> [!WARNING]
+> **This project is deprecated and no longer maintained.**
+> It has been replaced by **[Lorcana Card Maker](https://lorcanacardmaker.com)** — use that instead.
+>
+> The repository is archived and read-only. No further updates, bug fixes, or
+> dependency upgrades are planned, and issues and pull requests are closed.
+> The code remains available for reference — feel free to fork it.
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-**TCG Card Builder** is a React-based application that allows users to create custom trading card game (TCG) cards for games like **Lorcana** and **Yu-Gi-Oh**. Users can select templates, customize attributes such as card type, names, abilities, power levels, rarity, and upload custom artwork. Finished cards can be exported as images or PDFs for easy sharing and printing.
+**TCG Card Builder** is a React application for creating custom trading card game cards for **Lorcana** and **Yu-Gi-Oh**. Pick a template, customize attributes like card type, name, abilities, power levels and rarity, upload your own artwork, then export the finished card as an image or PDF.
 
 ## Live Demo
+
 [https://tcgbuilder.netlify.app/](https://tcgbuilder.netlify.app/)
+
+The demo may go offline at any time now that the project is no longer maintained. Use [lorcanacardmaker.com](https://lorcanacardmaker.com) instead.
 
 ## Features
 
-- **Template Options**: Choose from various card types such as:
-  - Character
-  - Action
-  - Magic
-  - Trap
-  - Fusion
-- **Customization**:
-  - Enter custom card names and abilities.
-  - Adjust power levels, rarity, and other attributes.
-  - Upload custom artwork for your cards.
-- **Export Options**:
-  - Save your cards as images.
-  - Generate PDF versions for easy sharing or printing.
+- **Template Options**: Character, Action, Magic, Trap and Fusion card types.
+- **Customization**: Custom card names and abilities, adjustable power levels and rarity, and custom uploaded artwork.
+- **Export Options**: Save cards as images or generate PDFs for sharing and printing.
 
 ### Supported Card Games
 
 - [x] **Lorcana**
-- [x] **Yu-Gi-Oh**
-- [ ] **Pokémon** (Coming Soon!)
-- [ ] **Magic: The Gathering** (Coming Soon!)
+- [x] **Yu-Gi-Oh** (legacy, unmaintained)
 
-## Installation
+Pokémon and Magic: The Gathering support were planned but never implemented, and no longer will be.
 
-To run the project locally, follow these steps:
+## Running Locally
 
-1. Clone the repository:  
-   `git clone https://github.com/your-username/tcg-card-builder.git`  
-2. Navigate to the project directory:  
-   `cd tcg-card-builder`  
-3. Install dependencies:  
-   `npm install`  
-4. Start the development server:  
+The project still builds and runs, but dependencies are pinned to versions from 2024 and are not receiving security updates.
+
+1. Clone the repository:
+   `git clone https://github.com/johnuberbacher/react-card-builder.git`
+2. Navigate to the project directory:
+   `cd react-card-builder`
+3. Install dependencies:
+   `npm install`
+4. Start the development server:
    `npm start`
 
 ### Docker Setup
 
-If you prefer to use Docker for development or deployment, you can follow these steps:
+With [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/) installed:
 
-1. Ensure you have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/) installed on your system.
-2. Clone the repository:  
-   `git clone https://github.com/your-username/tcg-card-builder.git`
-3. Navigate to the project directory:  
-   `cd tcg-card-builder`
-4. Build and run the Docker container:  
-   `docker-compose up --build`
-   
-   This will build the app, install dependencies, and serve it using Nginx on port 3000.
+1. `git clone https://github.com/johnuberbacher/react-card-builder.git`
+2. `cd react-card-builder`
+3. `docker-compose up --build`
 
-5. Open your browser and visit:  
-   [http://localhost:3000](http://localhost:3000)
+This builds the app, installs dependencies, and serves it with Nginx on port 3000. Open [http://localhost:3000](http://localhost:3000).
 
 ## Build
 
-To create a production-ready build locally using Docker:
-
-1. Run `docker-compose up --build` to rebuild the container.
-2. After the build process completes, the app will be available on `http://localhost:3000`.
-
-Alternatively, you can run the build without Docker using the following command:
-`npm run build`
+Run `npm run build` for a production build, or `docker-compose up --build` to build and serve it via Docker on `http://localhost:3000`.
 
 ## Dependencies
 
@@ -82,12 +71,10 @@ The project uses the following key libraries:
 
 ## Scripts
 
-Available scripts for development and production:
-
 - `npm start`: Starts the development server.
 - `npm run build`: Builds the app for production.
 - `npm test`: Runs the test suite.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE). It is provided as-is, with no support or maintenance.
